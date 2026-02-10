@@ -27,7 +27,7 @@
                         "white-100": "#f3f3f3",
                     },
                     boxShadow: {
-                        card: "0px 35px 120px -15px #211e35",
+                        card: "0px 35px 120px -15px rgba(128, 222, 234, 0.15)",
                     },
                     screens: {
                         xs: "450px",
@@ -42,11 +42,19 @@
 
     <!-- Custom Styles -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="stars.css">
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <!-- Icons (simulated via assets or placeholders where needed) -->
 </head>
 
 <body class="bg-primary relative z-0 overflow-x-hidden">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+    <div id="stars4"></div>
 
     <!-- Navbar -->
     <nav id="navbar" class="w-full flex items-center py-5 fixed top-0 z-20 bg-transparent transition-all duration-300">
@@ -115,14 +123,17 @@
     </nav>
 
     <!-- Hero Section -->
-    <section
-        class="relative w-full min-h-screen mx-auto overflow-hidden flex flex-col justify-center bg-cover bg-no-repeat bg-center pb-20 sm:pb-0"
-        style="background-image: url('./assets/images/Design/banner-bg.png')">
+    <section class="relative w-full min-h-screen mx-auto overflow-hidden flex flex-col justify-center pb-20 sm:pb-0">
 
-        <!-- Background Elements -->
+        <!-- Animated Banner Background Layer -->
+        <div class="absolute inset-0 z-[-1] bg-cover bg-no-repeat bg-center hero-animate-bg"
+            style="background-image: url('./assets/images/Design/banner-bg.png')">
+        </div>
+
+        <!-- Decorative Floating Elements -->
         <div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
             <div
-                class="absolute top-1/4 left-1/4 w-72 h-72 bg-[#915EFF] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob">
+                class="absolute top-1/4 left-1/4 w-72 h-72 bg-[#80DEEA] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob">
             </div>
             <div
                 class="absolute top-1/3 right-1/4 w-72 h-72 bg-[#00cea8] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob android-delay-2000">
@@ -138,12 +149,12 @@
             <div class="flex flex-col items-start gap-6">
                 <div class="flex flex-row items-center gap-4">
                     <div class="flex flex-col justify-center items-center h-full">
-                        <div class="w-5 h-5 rounded-full bg-[#915EFF]"></div>
+                        <div class="w-5 h-5 rounded-full bg-[#E0FBFF] shadow-[0_0_10px_rgba(128,222,234,0.5)]"></div>
                         <div class="w-1 h-40 sm:h-60 violet-gradient"></div>
                     </div>
                     <div class="z-10">
                         <h1 class="font-black text-white text-[40px] sm:text-[60px] lg:text-[80px] leading-tight mt-2">
-                            Hi, I'm <span class="text-[#915EFF]">MUHAMMAD ARSLAN HAIDER</span>
+                            Hi, I'm <span class="name-gradient">MUHAMMAD ARSLAN HAIDER</span>
                         </h1>
                         <div class="mt-4 flex items-center h-[50px]">
                             <span class="text-[#dfd9ff] font-medium text-[20px] sm:text-[30px] font-mono">
@@ -155,19 +166,22 @@
                         <!-- Social Links -->
                         <div class="mt-6 flex flex-wrap gap-4 z-10 relative">
                             <a href="https://github.com/arslanh600" target="_blank"
-                                class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1d1836] border border-[#915EFF] hover:bg-[#915EFF] hover:text-white transition-all duration-300 group shadow-[0_0_10px_rgba(145,94,255,0.4)]">
-                                <img src="./assets/images/tech/github.png" class="w-5 h-5 object-contain"
-                                    alt="github" />
-                                <span class="text-white font-medium">GitHub</span>
+                                class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1d1836] border border-[#80DEEA] hover:border-[#E0FBFF] hover:bg-[#80DEEA]/10 transition-all duration-300 group shadow-[0_0_15px_rgba(128,222,234,0.2)]">
+                                <img src="./assets/images/Design/github.png" class="w-5 h-5 object-contain"
+                                    alt="GitHub" />
+                                <span class="text-white font-medium group-hover:text-[#E0FBFF]">GitHub</span>
                             </a>
                             <a href="https://www.linkedin.com/in/arslanh600/" target="_blank"
-                                class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1d1836] border border-[#00cea8] hover:bg-[#00cea8] hover:text-white transition-all duration-300 group shadow-[0_0_10px_rgba(0,206,168,0.4)]">
-                                <span class="text-white font-medium">LinkedIn</span>
+                                class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1d1836] border border-[#0072b1] hover:border-[#80DEEA] hover:bg-[#0072b1]/10 transition-all duration-300 group shadow-[0_0_15px_rgba(0,114,177,0.2)]">
+                                <img src="./assets/images/Design/Linkdin.png" class="w-5 h-5 object-contain"
+                                    alt="LinkedIn" />
+                                <span class="text-white font-medium group-hover:text-[#80DEEA]">LinkedIn</span>
                             </a>
                             <!-- gmail -->
                             <a href="mailto:arslanh600@gmail.com" target="_blank"
-                                class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1d1836] border border-[#00cea8] hover:bg-[#00cea8] hover:text-white transition-all duration-300 group shadow-[0_0_10px_rgba(0,206,168,0.4)]">
-                                <span class="text-white font-medium">Gmail</span>
+                                class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1d1836] border border-[#80DEEA] hover:border-[#E0FBFF] hover:bg-[#80DEEA]/10 transition-all duration-300 group shadow-[0_0_15px_rgba(128,222,234,0.2)]">
+                                <img src="./assets/images/Design/mail.png" class="w-5 h-5 object-contain" alt="Gmail" />
+                                <span class="text-white font-medium group-hover:text-[#E0FBFF]">Gmail</span>
                             </a>
                         </div>
                     </div>
@@ -187,8 +201,8 @@
         <div class="absolute bottom-10 w-full flex justify-center items-center z-30">
             <a href="#about" class="cursor-pointer group">
                 <div
-                    class="w-[35px] h-[64px] rounded-3xl border-4 border-[#915EFF] group-hover:border-[#00cea8] transition-colors flex justify-center items-start p-2">
-                    <div class="w-3 h-3 rounded-full bg-[#915EFF] group-hover:bg-[#00cea8] mb-1 animate-scroll-bounce">
+                    class="w-[35px] h-[64px] rounded-3xl border-4 border-[#80DEEA] group-hover:border-[#E0FBFF] transition-colors flex justify-center items-start p-2">
+                    <div class="w-3 h-3 rounded-full bg-[#80DEEA] group-hover:bg-[#E0FBFF] mb-1 animate-scroll-bounce">
                     </div>
                 </div>
             </a>
@@ -220,7 +234,7 @@
                 </p>
             </div>
             <div class="flex-1 flex justify-center items-center relative min-h-[300px] md:min-h-[400px]">
-                <img src="./assets/images/Design/user.svg"
+                <img src="./assets/images/Design/header.svg"
                     class="w-full h-full object-contain animate-float drop-shadow-2xl" />
             </div>
         </div>
@@ -232,7 +246,7 @@
                 <div class="w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card">
                     <div
                         class="bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col">
-                        <img src="./assets/images/Design/web.png" class="w-16 h-16 object-contain" />
+                        <img src="./assets/images/Design/backend.gif" class="w-16 h-16 object-contain" />
                         <h3 class="text-white text-[20px] font-bold text-center"> Software Development Life Cycle (SDLC)
                         </h3>
                     </div>
@@ -244,18 +258,17 @@
                     <div
                         class="bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col">
                         <!-- Placeholder icon if actual one absent -->
-                        <img src="./assets/images/Design/web.png" class="w-16 h-16 object-contain" />
+                        <img src="./assets/images/Design/backend.gif" class="w-16 h-16 object-contain" />
                         <h3 class="text-white text-[20px] font-bold text-center">Backend Developer</h3>
                     </div>
                 </div>
             </div>
-            Card 3
             <div class="tilt-card xs:w-[250px] w-full">
                 <div class="w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card">
                     <div
                         class="bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col">
-                        <img src="./assets/images/Design/web.png" class="w-16 h-16 object-contain" />
-                        <h3 class="text-white text-[20px] font-bold text-center">Content Creator</h3>
+                        <img src="./assets/images/Design/fron-end.gif" class="w-16 h-16 object-contain" />
+                        <h3 class="text-white text-[20px] font-bold text-center">Frontend Developer</h3>
                     </div>
                 </div>
             </div>
@@ -368,7 +381,7 @@
         <div class="absolute inset-0 z-0 w-full h-full pointer-events-none">
             <div class="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-[#050816] to-transparent z-10"></div>
             <!-- Video background if supported -->
-            <video class="w-full h-full object-cover opacity-30" autoplay loop muted playsinline>
+            <video class="w-full h-full object-cover opacity-60" autoplay loop muted playsinline>
                 <source src="./assets/images/Design/cards-video.webm" type="video/webm">
             </video>
             <div class="absolute top-[-400px] left-[-200px] w-[1000px] h-[1000px] z-[0] bg-radial-glow opacity-60">
@@ -381,46 +394,179 @@
                 <h2 class="text-white font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]">Skills.</h2>
             </div>
 
-            <div class="mt-14 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 justify-center">
-                <!-- Tech Items (repeated pattern) -->
-                <div class="tilt-card w-full h-full">
+            <!-- 3D Constellation Container -->
+            <!-- Command Deck (Tabbed Interface) -->
+            <div class="mt-14 relative flex justify-center w-full">
+                <div
+                    class="command-deck border border-white/10 rounded-3xl w-full flex flex-col md:flex-row min-h-[500px] overflow-hidden">
+
+                    <!-- Sidebar Tabs -->
                     <div
-                        class="w-full h-[120px] relative group cursor-pointer flex flex-col justify-center items-center bg-tertiary/40 backdrop-blur-sm rounded-xl border border-white/10 hover:border-[#915EFF]/50 transition-all duration-300 shadow-card">
-                        <img src="./assets/images/tech/html.png"
-                            class="w-16 h-16 object-contain filter drop-shadow-lg" />
-                        <p class="text-secondary text-[14px] font-medium mt-2">HTML 5</p>
+                        class="deck-sidebar md:w-1/4 border-r border-white/5 p-4 flex md:flex-col overflow-x-auto md:overflow-y-auto no-scrollbar gap-2">
+                        <button class="deck-tab active" onclick="switchDeckTab('core')">
+                            <span class="tab-icon">💻</span>
+                            <span class="tab-label">Core & Languages</span>
+                        </button>
+                        <button class="deck-tab" onclick="switchDeckTab('web')">
+                            <span class="tab-icon">🌐</span>
+                            <span class="tab-label">Web Technologies</span>
+                        </button>
+                        <button class="deck-tab" onclick="switchDeckTab('frameworks')">
+                            <span class="tab-icon">🏗️</span>
+                            <span class="tab-label">Frameworks & Architecture</span>
+                        </button>
+                        <button class="deck-tab" onclick="switchDeckTab('database')">
+                            <span class="tab-icon">📁</span>
+                            <span class="tab-label">Databases & Data</span>
+                        </button>
+                        <button class="deck-tab" onclick="switchDeckTab('api')">
+                            <span class="tab-icon">🔌</span>
+                            <span class="tab-label">API & Integration</span>
+                        </button>
+                        <button class="deck-tab" onclick="switchDeckTab('cloud')">
+                            <span class="tab-icon">☁️</span>
+                            <span class="tab-label">Cloud & DevOps</span>
+                        </button>
+                        <button class="deck-tab" onclick="switchDeckTab('troubleshoot')">
+                            <span class="tab-icon">🔍</span>
+                            <span class="tab-label">Analysis & Debugging</span>
+                        </button>
+                        <button class="deck-tab" onclick="switchDeckTab('management')">
+                            <span class="tab-icon">👥</span>
+                            <span class="tab-label">Management & Soft Skills</span>
+                        </button>
                     </div>
-                </div>
-                <div class="tilt-card w-full h-full">
-                    <div
-                        class="w-full h-[120px] relative group cursor-pointer flex flex-col justify-center items-center bg-tertiary/40 backdrop-blur-sm rounded-xl border border-white/10 hover:border-[#915EFF]/50 transition-all duration-300 shadow-card">
-                        <img src="./assets/images/tech/css.png"
-                            class="w-16 h-16 object-contain filter drop-shadow-lg" />
-                        <p class="text-secondary text-[14px] font-medium mt-2">CSS 3</p>
-                    </div>
-                </div>
-                <div class="tilt-card w-full h-full">
-                    <div
-                        class="w-full h-[120px] relative group cursor-pointer flex flex-col justify-center items-center bg-tertiary/40 backdrop-blur-sm rounded-xl border border-white/10 hover:border-[#915EFF]/50 transition-all duration-300 shadow-card">
-                        <img src="./assets/images/tech/javascript.png"
-                            class="w-16 h-16 object-contain filter drop-shadow-lg" />
-                        <p class="text-secondary text-[14px] font-medium mt-2">JavaScript</p>
-                    </div>
-                </div>
-                <div class="tilt-card w-full h-full">
-                    <div
-                        class="w-full h-[120px] relative group cursor-pointer flex flex-col justify-center items-center bg-tertiary/40 backdrop-blur-sm rounded-xl border border-white/10 hover:border-[#915EFF]/50 transition-all duration-300 shadow-card">
-                        <img src="./assets/images/tech/typescript.png"
-                            class="w-16 h-16 object-contain filter drop-shadow-lg" />
-                        <p class="text-secondary text-[14px] font-medium mt-2">TypeScript</p>
-                    </div>
-                </div>
-                <div class="tilt-card w-full h-full">
-                    <div
-                        class="w-full h-[120px] relative group cursor-pointer flex flex-col justify-center items-center bg-tertiary/40 backdrop-blur-sm rounded-xl border border-white/10 hover:border-[#915EFF]/50 transition-all duration-300 shadow-card">
-                        <img src="./assets/images/tech/reactjs.png"
-                            class="w-16 h-16 object-contain filter drop-shadow-lg" />
-                        <p class="text-secondary text-[14px] font-medium mt-2">React JS</p>
+
+                    <!-- Main Display Area -->
+                    <div class="deck-display md:w-3/4 p-8 relative">
+
+                        <!-- Panel 1: Core -->
+                        <div id="deck-panel-core" class="deck-panel active">
+                            <h3 class="panel-title"><span class="text-secondary">#</span> Core Programming</h3>
+                            <div class="panel-grid">
+                                <div class="skill-item">C#</div>
+                                <div class="skill-item">JavaScript</div>
+                                <div class="skill-item">TypeScript</div>
+                                <div class="skill-item">XML</div>
+                                <div class="skill-item">SOLID Principles</div>
+                                <div class="skill-item">Clean Architecture</div>
+                                <div class="skill-item">OOP</div>
+                                <div class="skill-item">Coding Standards</div>
+                                <div class="skill-item">Algorithms</div>
+                                <div class="skill-item">Data Structures</div>
+                            </div>
+                        </div>
+
+                        <!-- Panel 2: Web -->
+                        <div id="deck-panel-web" class="deck-panel">
+                            <h3 class="panel-title"><span class="text-secondary">#</span> Web Technologies</h3>
+                            <div class="panel-grid">
+                                <div class="skill-item">HTML5</div>
+                                <div class="skill-item">CSS3</div>
+                                <div class="skill-item">SCSS</div>
+                                <div class="skill-item">Angular</div>
+                                <div class="skill-item">ReactJS</div>
+                                <div class="skill-item">AngularJS</div>
+                                <div class="skill-item">Bootstrap</div>
+                                <div class="skill-item">Material UI</div>
+                                <div class="skill-item">PrimeNG</div>
+                                <div class="skill-item">NG Bootstrap</div>
+                                <div class="skill-item">DevExpress</div>
+                                <div class="skill-item">Responsive Design</div>
+                                <div class="skill-item">Cross-Browser Compatibility</div>
+                            </div>
+                        </div>
+
+                        <!-- Panel 3: Frameworks -->
+                        <div id="deck-panel-frameworks" class="deck-panel">
+                            <h3 class="panel-title"><span class="text-secondary">#</span> Frameworks & Patterns</h3>
+                            <div class="panel-grid">
+                                <div class="skill-item">.NET Core / Core Web API</div>
+                                <div class="skill-item">Microsoft .NET</div>
+                                <div class="skill-item">WPF</div>
+                                <div class="skill-item">WinForms</div>
+                                <div class="skill-item">AbpFramework</div>
+                                <div class="skill-item">Hangfire</div>
+                                <div class="skill-item">Dapper</div>
+                                <div class="skill-item">EF Core</div>
+                                <div class="skill-item">ADO.NET</div>
+                                <div class="skill-item">CQRS Design Pattern</div>
+                                <div class="skill-item">Microservices</div>
+                                <div class="skill-item">XUnit / NUnit</div>
+                            </div>
+                        </div>
+
+                        <!-- Panel 4: Database -->
+                        <div id="deck-panel-database" class="deck-panel">
+                            <h3 class="panel-title"><span class="text-secondary">#</span> Databases & Data</h3>
+                            <div class="panel-grid">
+                                <div class="skill-item">MS SQL Server</div>
+                                <div class="skill-item">MySQL</div>
+                                <div class="skill-item">PostgreSQL</div>
+                                <div class="skill-item">SQLite</div>
+                                <div class="skill-item">Firebase (Firestore/Realtime)</div>
+                                <div class="skill-item">NoSQL Databases</div>
+                                <div class="skill-item">Data Analysis</div>
+                                <div class="skill-item">Reporting Tools</div>
+                            </div>
+                        </div>
+
+                        <!-- Panel 5: API -->
+                        <div id="deck-panel-api" class="deck-panel">
+                            <h3 class="panel-title"><span class="text-secondary">#</span> API & Integration</h3>
+                            <div class="panel-grid">
+                                <div class="skill-item">RESTful APIs</div>
+                                <div class="skill-item">API Integration</div>
+                                <div class="skill-item">API Design</div>
+                                <div class="skill-item">RestSharp</div>
+                                <div class="skill-item">Postman</div>
+                                <div class="skill-item">Swagger</div>
+                                <div class="skill-item">WebHooks</div>
+                            </div>
+                        </div>
+
+                        <!-- Panel 6: Cloud -->
+                        <div id="deck-panel-cloud" class="deck-panel">
+                            <h3 class="panel-title"><span class="text-secondary">#</span> Cloud & DevOps</h3>
+                            <div class="panel-grid">
+                                <div class="skill-item">AWS</div>
+                                <div class="skill-item">Azure / Azure DevOps</div>
+                                <div class="skill-item">Git / GitHub / GitLab</div>
+                                <div class="skill-item">BitBucket</div>
+                                <div class="skill-item">CI/CD</div>
+                                <div class="skill-item">DevOps Practices</div>
+                                <div class="skill-item">Docker</div>
+                            </div>
+                        </div>
+
+                        <!-- Panel 7: troubleshooting -->
+                        <div id="deck-panel-troubleshoot" class="deck-panel">
+                            <h3 class="panel-title"><span class="text-secondary">#</span> Analysis & Debugging</h3>
+                            <div class="panel-grid">
+                                <div class="skill-item">Technical Analysis</div>
+                                <div class="skill-item">Troubleshooting</div>
+                                <div class="skill-item">Debugging Techniques</div>
+                                <div class="skill-item">Performance Optimization</div>
+                                <div class="skill-item">Performance Testing</div>
+                                <div class="skill-item">Issue Resolution</div>
+                            </div>
+                        </div>
+
+                        <!-- Panel 8: Management -->
+                        <div id="deck-panel-management" class="deck-panel">
+                            <h3 class="panel-title"><span class="text-secondary">#</span> Management & Expertise</h3>
+                            <div class="panel-grid">
+                                <div class="skill-item">Project Planning / Coordination</div>
+                                <div class="skill-item">Agile / Scrum</div>
+                                <div class="skill-item">Team Collaboration</div>
+                                <div class="skill-item">Technical Support</div>
+                                <div class="skill-item">Mentoring</div>
+                                <div class="skill-item">Documentation</div>
+                                <div class="skill-item">Time Management</div>
+                                <div class="skill-item">Customer Support</div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -438,35 +584,201 @@
         </p>
 
         <div class="mt-20 grid grid-cols-1 xl:grid-cols-2 gap-10">
-            <!-- Project Card 1 -->
+            <!-- Project 1: Future Event 2025 -->
+            <a href="https://event2025.eventoclients.com/" target="_blank" rel="noopener noreferrer"
+                class="tilt-card bg-black-200 rounded-2xl overflow-hidden sm:w-[500px] w-full mx-auto relative cursor-pointer block hover:scale-[1.02] transition-transform duration-300">
+                <div class="w-full h-[230px] relative group overflow-hidden rounded-t-2xl">
+                    <img src="./assets/images/Projects/Future Event 2025 – Event Management Portal (Dubai).png"
+                        class="w-full h-full object-cover rounded-t-2xl group-hover:scale-110 transition-all"
+                        onerror="this.onerror=null; this.src='https://via.placeholder.com/500x230?text=Project+Image'" />
+                </div>
+                <div
+                    class="p-6 min-h-[250px] flex flex-col justify-between backdrop-blur-sm bg-tertiary/80 rounded-b-2xl">
+                    <div>
+                        <h3 class="text-white text-[24px] font-bold mb-2">Future Event 2025 🔗</h3>
+                        <p class="text-secondary text-[14px] mb-4">Developed a full-scale event registration and
+                            ticketing platform for a Dubai-based client, supporting public users, organizers, and media
+                            teams.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-[14px] text-blue-500">#.NET Core</span>
+                            <span class="text-[14px] text-green-500">#Angular</span>
+                            <span class="text-[14px] text-pink-500">#SQL Server</span>
+                            <span class="text-[14px] text-yellow-500">#Hangfire</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Project 2: Athar Festival -->
+            <div
+                class="tilt-card bg-black-200 rounded-2xl overflow-hidden sm:w-[500px] w-full mx-auto relative cursor-pointer">
+                <div class="w-full h-[230px] relative group overflow-hidden rounded-t-2xl">
+                    <img src="./assets/images/Projects/Athar Festival – Event Registration System.png"
+                        class="w-full h-full object-cover rounded-t-2xl group-hover:scale-110 transition-all"
+                        onerror="this.onerror=null; this.src='https://via.placeholder.com/500x230?text=Project+Image'" />
+                </div>
+                <div
+                    class="p-6 min-h-[250px] flex flex-col justify-between backdrop-blur-sm bg-tertiary/80 rounded-b-2xl">
+                    <div>
+                        <h3 class="text-white text-[24px] font-bold mb-2">Athar Festival</h3>
+                        <p class="text-secondary text-[14px] mb-4">Contributed to the development of a large-scale event
+                            management solution for a different client using the same enterprise-level platform.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-[14px] text-blue-500">#.NET Core</span>
+                            <span class="text-[14px] text-green-500">#Angular</span>
+                            <span class="text-[14px] text-pink-500">#SQL Server</span>
+                            <span class="text-[14px] text-yellow-500">#Hangfire</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: Mosadaqa -->
+            <a href="https://www.mosadaqa.sa/Home/Landing" target="_blank" rel="noopener noreferrer"
+                class="tilt-card bg-black-200 rounded-2xl overflow-hidden sm:w-[500px] w-full mx-auto relative cursor-pointer block hover:scale-[1.02] transition-transform duration-300">
+                <div class="w-full h-[230px] relative group overflow-hidden rounded-t-2xl">
+                    <img src="./assets/images/Projects/Mosadaqa – Saudi Government Education Portal.png"
+                        class="w-full h-full object-cover rounded-t-2xl group-hover:scale-110 transition-all"
+                        onerror="this.onerror=null; this.src='https://via.placeholder.com/500x230?text=Project+Image'" />
+                </div>
+                <div
+                    class="p-6 min-h-[250px] flex flex-col justify-between backdrop-blur-sm bg-tertiary/80 rounded-b-2xl">
+                    <div>
+                        <h3 class="text-white text-[24px] font-bold mb-2">Mosadaqa 🔗</h3>
+                        <p class="text-secondary text-[14px] mb-4">Developed a student registration and certificate
+                            verification portal for a Saudi government client, enabling applicants to apply for higher
+                            education.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-[14px] text-blue-500">#React.js</span>
+                            <span class="text-[14px] text-green-500">#.NET Core</span>
+                            <span class="text-[14px] text-pink-500">#Dynamics 365</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Project 4: Dynamic Forms Builder -->
+            <div
+                class="tilt-card bg-black-200 rounded-2xl overflow-hidden sm:w-[500px] w-full mx-auto relative cursor-pointer">
+                <div class="w-full h-[230px] relative group overflow-hidden rounded-t-2xl">
+                    <img src="./assets/images/Projects/Dynamic Forms Builder.png"
+                        class="w-full h-full object-cover rounded-t-2xl group-hover:scale-110 transition-all"
+                        onerror="this.onerror=null; this.src='https://via.placeholder.com/500x230?text=Project+Image'" />
+                </div>
+                <div
+                    class="p-6 min-h-[250px] flex flex-col justify-between backdrop-blur-sm bg-tertiary/80 rounded-b-2xl">
+                    <div>
+                        <h3 class="text-white text-[24px] font-bold mb-2">Dynamic Forms Builder</h3>
+                        <p class="text-secondary text-[14px] mb-4">Implemented backend architecture design and
+                            development for a scalable dynamic form builder application, enabling organizations to
+                            create customizable forms.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-[14px] text-blue-500">#.NET Core</span>
+                            <span class="text-[14px] text-green-500">#Angular</span>
+                            <span class="text-[14px] text-pink-500">#CQRS</span>
+                            <span class="text-[14px] text-yellow-500">#Azure DevOps</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5: MergersBay -->
+            <div
+                class="tilt-card bg-black-200 rounded-2xl overflow-hidden sm:w-[500px] w-full mx-auto relative cursor-pointer">
+                <div class="w-full h-[230px] relative group overflow-hidden rounded-t-2xl">
+                    <img src="./assets/images/Projects/MergersBay – Real-Time Collaboration Platform.png"
+                        class="w-full h-full object-cover rounded-t-2xl group-hover:scale-110 transition-all"
+                        onerror="this.onerror=null; this.src='https://via.placeholder.com/500x230?text=Project+Image'" />
+                </div>
+                <div
+                    class="p-6 min-h-[250px] flex flex-col justify-between backdrop-blur-sm bg-tertiary/80 rounded-b-2xl">
+                    <div>
+                        <h3 class="text-white text-[24px] font-bold mb-2">MergersBay</h3>
+                        <p class="text-secondary text-[14px] mb-4">Contributed to the development of a real-time
+                            collaboration platform by integrating advanced communication capabilities for seamless
+                            interaction.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-[14px] text-blue-500">#.NET Core</span>
+                            <span class="text-[14px] text-green-500">#Angular</span>
+                            <span class="text-[14px] text-pink-500">#WebSockets</span>
+                            <span class="text-[14px] text-yellow-500">#Azure</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 6: Ascent 2.0 -->
             <div
                 class="tilt-card bg-black-200 rounded-2xl overflow-hidden sm:w-[500px] w-full mx-auto relative cursor-pointer">
                 <div class="w-full h-[230px] relative group overflow-hidden rounded-t-2xl">
                     <img src="./assets/images/Projects/Ascent 2.0 – Wholesale Management System.png"
                         class="w-full h-full object-cover rounded-t-2xl group-hover:scale-110 transition-all"
                         onerror="this.onerror=null; this.src='https://via.placeholder.com/500x230?text=Project+Image'" />
-                    <div
-                        class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center items-center gap-4">
-                        <a href="#" target="_blank"
-                            class="black-gradient w-12 h-12 rounded-full flex justify-center items-center border border-[#915EFF]">
-                            <img src="./assets/images/tech/github.png" class="w-1/2 h-1/2 object-contain" />
-                        </a>
-                    </div>
                 </div>
                 <div
                     class="p-6 min-h-[250px] flex flex-col justify-between backdrop-blur-sm bg-tertiary/80 rounded-b-2xl">
                     <div>
-                        <h3 class="text-white text-[24px] font-bold mb-2">Project Name</h3>
-                        <p class="text-secondary text-[14px] mb-4">A brief description of the project goes here.</p>
+                        <h3 class="text-white text-[24px] font-bold mb-2">Ascent 2.0</h3>
+                        <p class="text-secondary text-[14px] mb-4">Played a key role in enhancing and maintaining a
+                            large-scale wholesale platform by implementing complex change requests and optimizing core
+                            modules.</p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="text-[14px] text-blue-500">#angular</span>
-                            <span class="text-[14px] text-green-500">#dotnet</span>
+                            <span class="text-[14px] text-blue-500">#.NET WPF</span>
+                            <span class="text-[14px] text-green-500">#Fluent API</span>
+                            <span class="text-[14px] text-pink-500">#MSSQL</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Additional project cards would follow same pattern -->
+            <!-- Project 7: Pentair Pool Builder -->
+            <div
+                class="tilt-card bg-black-200 rounded-2xl overflow-hidden sm:w-[500px] w-full mx-auto relative cursor-pointer">
+                <div class="w-full h-[230px] relative group overflow-hidden rounded-t-2xl">
+                    <img src="./assets/images/Projects/Pentair Pool Builder – Pool Management & Service Automation Platform.png"
+                        class="w-full h-full object-cover rounded-t-2xl group-hover:scale-110 transition-all"
+                        onerror="this.onerror=null; this.src='https://via.placeholder.com/500x230?text=Project+Image'" />
+                </div>
+                <div
+                    class="p-6 min-h-[250px] flex flex-col justify-between backdrop-blur-sm bg-tertiary/80 rounded-b-2xl">
+                    <div>
+                        <h3 class="text-white text-[24px] font-bold mb-2">Pentair Pool Builder</h3>
+                        <p class="text-secondary text-[14px] mb-4">Collaborated on the development of a cloud-enabled
+                            pool management system focused on automating service workflows and improving operational
+                            efficiency.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-[14px] text-blue-500">#ABP Framework</span>
+                            <span class="text-[14px] text-green-500">#Angular</span>
+                            <span class="text-[14px] text-pink-500">#Azure</span>
+                            <span class="text-[14px] text-yellow-500">#.NET Core</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 8: POS -->
+            <div
+                class="tilt-card bg-black-200 rounded-2xl overflow-hidden sm:w-[500px] w-full mx-auto relative cursor-pointer">
+                <div class="w-full h-[230px] relative group overflow-hidden rounded-t-2xl">
+                    <img src="./assets/images/Projects/POS – eCommerce & Point of Sale Platform.png"
+                        class="w-full h-full object-cover rounded-t-2xl group-hover:scale-110 transition-all"
+                        onerror="this.onerror=null; this.src='https://via.placeholder.com/500x230?text=Project+Image'" />
+                </div>
+                <div
+                    class="p-6 min-h-[250px] flex flex-col justify-between backdrop-blur-sm bg-tertiary/80 rounded-b-2xl">
+                    <div>
+                        <h3 class="text-white text-[24px] font-bold mb-2">POS Platform</h3>
+                        <p class="text-secondary text-[14px] mb-4">Developed a scalable eCommerce and POS platform to
+                            help small businesses rapidly transition online, enabling seamless digital sales.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-[14px] text-blue-500">#.NET Core</span>
+                            <span class="text-[14px] text-green-500">#Angular</span>
+                            <span class="text-[14px] text-pink-500">#Stripe</span>
+                            <span class="text-[14px] text-yellow-500">#SQL Server</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -475,14 +787,18 @@
         <div class="fade-in-section">
             <p class="sm:text-[18px] text-[14px] text-secondary uppercase tracking-wider">Get in touch</p>
             <h2 class="text-white font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]">Contact.</h2>
+            <p
+                class="mt-4 text-white text-[18px] max-w-3xl leading-[30px] font-bold fade-in-section flex items-center gap-3">
+                <span class="text-secondary">Phone:</span> +92-308-7001937
+            </p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-12">
             <!-- Left Side: Earth Canvas Stub -->
-            <div
-                class="flex flex-col justify-between h-full overflow-hidden rounded-2xl bg-black-100 min-h-[350px] flex items-center justify-center">
-                <p class="text-secondary">3D Earth Canvas Placeholder</p>
-                <!-- In a real port, you'd initialize Three.js here in script.js -->
+            <!-- Left Side: Earth Canvas -->
+            <div id="earth-container"
+                class="w-full h-full min-h-[350px] h-[400px] cursor-grab rounded-2xl overflow-hidden bg-black-100/50 backdrop-blur-sm relative">
+                <!-- Three.js Canvas will be appended here -->
             </div>
 
             <!-- Right Side: Form -->
@@ -507,7 +823,7 @@
                             placeholder="Your message"></textarea>
                     </div>
                     <button type="submit"
-                        class="w-full bg-gradient-to-r from-purple-500 to-cyan-500 text-white py-4 rounded-lg font-bold text-lg hover:shadow-lg transition">Send
+                        class="w-full bg-gradient-to-r from-[#80DEEA] to-[#E0FBFF] text-[#050816] py-4 rounded-lg font-bold text-lg hover:shadow-[0_0_30px_rgba(128,222,234,0.4)] transition-all duration-300 hover:scale-[1.02]">Send
                         Message</button>
                 </form>
             </div>
@@ -518,13 +834,23 @@
     <footer class="relative w-full bg-black-200 py-12 px-6 border-t border-white border-opacity-10">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center h-full">
             <div class="text-secondary mb-4 md:mb-0">
-                <p class="font-semibold">© 2026 Muhammad Arslan Haider. All rights reserved.</p>
+                <p class="font-semibold text-white/80 transition-colors hover:text-white">© 2026 Muhammad Arslan Haider.
+                    All rights reserved.</p>
             </div>
-            <div class="flex gap-6">
+            <div class="flex gap-10">
                 <!-- Socials -->
-                <a href="https://github.com/arslanh600" class="text-secondary hover:text-white transition">GitHub</a>
-                <a href="https://www.linkedin.com/in/arslanh600/"
-                    class="text-secondary hover:text-white transition">LinkedIn</a>
+                <a href="https://github.com/arslanh600" target="_blank"
+                    class="flex items-center gap-2 text-secondary hover:text-[#E0FBFF] transition-all duration-300 group">
+                    <img src="./assets/images/Design/github.png"
+                        class="w-5 h-5 object-contain brightness-75 group-hover:brightness-100" alt="GitHub" />
+                    <span class="font-medium text-sm lg:text-base">GitHub</span>
+                </a>
+                <a href="https://www.linkedin.com/in/arslanh600/" target="_blank"
+                    class="flex items-center gap-2 text-secondary hover:text-[#80DEEA] transition-all duration-300 group">
+                    <img src="./assets/images/Design/Linkdin.png"
+                        class="w-5 h-5 object-contain brightness-75 group-hover:brightness-100" alt="LinkedIn" />
+                    <span class="font-medium text-sm lg:text-base">LinkedIn</span>
+                </a>
             </div>
         </div>
     </footer>
