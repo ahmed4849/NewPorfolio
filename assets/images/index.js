@@ -1,88 +1,75 @@
-import logo from "./logo.svg";
-import backend from "./backend.png";
-import creator from "./creator.png";
-import mobile from "./mobile.png";
-import web from "./web.png";
-import github from "./github.png";
-import menu from "./menu.svg";
-import close from "./close.svg";
+import web from "./Design/web.png";
+import github from "./tech/github.png";
+import menu from "./Design/menu.svg";
+import close from "./Design/close.svg";
 
 import css from "./tech/css.png";
 import docker from "./tech/docker.png";
-import figma from "./tech/figma.png";
 import git from "./tech/git.png";
 import html from "./tech/html.png";
 import javascript from "./tech/javascript.png";
-import mongodb from "./tech/mongodb.png";
-import nodejs from "./tech/nodejs.png";
 import reactjs from "./tech/reactjs.png";
 import redux from "./tech/redux.png";
 import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
-import threejs from "./tech/threejs.svg";
-import nextjs from "./tech/nextjs.svg";
-import express from "./tech/express.png";
-import java from "./tech/java.png";
+
 import jwt from "./tech/jwt.svg";
-import nextauth from "./tech/nextauth.png";
 import csharp from "./tech/c-sharp.png";
 import angular from "./tech/angular.png";
-import bootstrap from "./tech/Bootstap.png";
-import dotnet from "./tech/Asp.net.png";
-import agenticai from "./tech/Agentic Ai.png";
+import bootstrap from "./tech/Bootstap.png"; // Note spelling in file system
+import dotnet from "./tech/Asp.net.png"; // Note filename
 import sql from "./tech/SQL.png";
 
-import meta from "./company/meta.png";
-import shopify from "./company/shopify.png";
-import starbucks from "./company/starbucks.png";
-import tesla from "./company/tesla.png";
 
-import carrent from "./carrent.png";
-import jobit from "./jobit.png";
-import inkSync from "./ink.png";
-import tracker from "./tracker.png";
-import socialSphere from "./socialSphere.png";
+import ascent from "./Projects/Ascent 2.0 – Wholesale Management System.png";
+import athar from "./Projects/Athar Festival – Event Registration System.png";
+import dynamicForms from "./Projects/Dynamic Forms Builder.png";
+import futureEvent from "./Projects/Future Event 2025 – Event Management Portal (Dubai).png";
+import mergersBay from "./Projects/MergersBay – Real-Time Collaboration Platform.png";
+import mosadaqa from "./Projects/Mosadaqa – Saudi Government Education Portal.png";
+import pos from "./Projects/POS – eCommerce & Point of Sale Platform.png";
+import pentair from "./Projects/Pentair Pool Builder – Pool Management & Service Automation Platform.png";
 
 export {
-  logo,
-  backend,
-  creator,
-  mobile,
   web,
   github,
   menu,
   close,
   css,
   docker,
-  figma,
   git,
   html,
   javascript,
-  mongodb,
-  nodejs,
   reactjs,
   redux,
   tailwind,
   typescript,
-  threejs,
-  meta,
-  shopify,
-  starbucks,
-  tesla,
-  carrent,
-  jobit,
-  inkSync,
-  tracker,
-  socialSphere,
-  nextjs,
-  express,
-  java,
   jwt,
-  nextauth,
   csharp,
   angular,
   bootstrap,
   dotnet,
-  agenticai,
   sql,
+  ascent,
+  athar,
+  dynamicForms,
+  futureEvent,
+  mergersBay,
+  mosadaqa,
+  pos,
+  pentair,
+  jwt,
+  csharp,
+  angular,
+  bootstrap,
+  dotnet,
+  sql,
+  ascent,
+  athar,
+  dynamicForms,
+  futureEvent,
+  mergersBay,
+  mosadaqa,
+  pos,
+  pentair,
 };

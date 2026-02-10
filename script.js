@@ -12,16 +12,16 @@ menuToggle.addEventListener('click', () => {
 
     // Toggle Icon (Simple swap logic if you have close icon, otherwise just assume toggle)
     if (mobileMenu.classList.contains('flex')) {
-        menuIcon.src = "./assets/images/close.svg";
+        menuIcon.src = "./assets/images/Design/close.svg";
     } else {
-        menuIcon.src = "./assets/images/menu.svg";
+        menuIcon.src = "./assets/images/Design/menu.svg";
     }
 });
 
 function closeMenu() {
     mobileMenu.classList.add('hidden');
     mobileMenu.classList.remove('flex');
-    menuIcon.src = "./assets/images/menu.svg";
+    menuIcon.src = "./assets/images/Design/menu.svg";
 }
 
 // Scroll Effect for Navbar
