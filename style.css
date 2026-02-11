@@ -14,6 +14,12 @@ body {
     color: #fff;
 }
 
+/* Prevent all images from being selectable/draggable */
+img {
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
 /* Gradients */
 .violet-gradient {
     background: #E0FBFF;
@@ -415,6 +421,9 @@ body {
 }
 
 .skill-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 12px 18px;
@@ -422,17 +431,16 @@ body {
     color: #fff;
     font-size: 13px;
     font-weight: 500;
-    text-align: center;
     transition: all 0.3s ease;
     backdrop-filter: blur(3px);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .skill-item:hover {
-    background: rgba(145, 94, 255, 0.1);
-    border-color: rgba(145, 94, 255, 0.3);
+    background: rgba(128, 222, 234, 0.1);
+    border-color: rgba(128, 222, 234, 0.3);
     color: #fff;
-    transform: translateY(-5px);
+    transform: translateY(-3px);
     box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.3);
 }
 
@@ -532,22 +540,7 @@ body {
     background-size: 150% 150%;
 }
 
-.skill-item {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.5rem 1rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 0.75rem;
-    transition: all 0.3s ease;
-}
-
-.skill-item:hover {
-    background: rgba(128, 222, 234, 0.1);
-    border-color: rgba(128, 222, 234, 0.3);
-    transform: translateY(-2px);
-}
+/* Duplicate .skill-item removed - consolidated above */
 
 .skill-icon {
     width: 24px;
@@ -571,20 +564,15 @@ body {
     letter-spacing: 0.1em;
     /* text-transform: uppercase; */
     z-index: 1;
-    animation: backgroundMove 20s linear infinite;
+    animation: backgroundMove 20s ease-in-out infinite alternate;
 }
 
 @keyframes backgroundMove {
     0% {
-        transform: translate(-50%, -50%) translateX(-10%);
+        transform: translate(-50%, -50%) translateX(-20%);
     }
-
-    50% {
-        transform: translate(-50%, -50%) translateX(10%);
-    }
-
     100% {
-        transform: translate(-50%, -50%) translateX(-10%);
+        transform: translate(-50%, -50%) translateX(20%);
     }
 }
 
@@ -704,4 +692,38 @@ html, body {
     #hero .animate-float-slow img {
         max-width: 90vw;
     }
+}
+
+/* === Service cards mobile fix === */
+@media (max-width: 480px) {
+    .tilt-card {
+        max-width: 100% !important;
+    }
+
+    /* Project card text */
+    .tilt-card .text-\[24px\] {
+        font-size: 20px;
+    }
+
+    /* Footer mobile */
+    footer .flex {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* Social links wrap */
+    footer .gap-8 {
+        gap: 1rem;
+    }
+}
+
+/* === Smooth transitions for all interactive elements === */
+a, button {
+    transition: all 0.3s ease;
+}
+
+/* === Focus styles for accessibility === */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+    outline: 2px solid #80DEEA;
+    outline-offset: 2px;
 }
